@@ -25,7 +25,7 @@ namespace Sitecore.Support.ExperienceAnalytics.Aggregation.FlexibleMetrics.Goal
             return new GoalMetrics
             {
                 Visits = 1,
-                Value = context.Interaction.EngagementValue,
+                Value = groupMeasurement.Occurrences.Sum(evt => evt.EngagementValue),
                 Conversions = context.Interaction.Events.Count(evt => evt is XConnect.Goal),
                 Count = groupMeasurement.Occurrences.Count()
             };
